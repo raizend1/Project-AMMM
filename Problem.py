@@ -30,7 +30,7 @@ class Problem(object):
         timeWindow = self.inputData.timeWindow
         dist = self.inputData.dist
 
-        self.nLocations = []                             # vector with tasks
+        self.tasks = []                             # review this
         for tId in xrange(0, nTasks):               # tId = 0..(nTasks-1)
             task = Task(tId)
             for hId in xrange(0, nThreads):         # hId = 0..(nThreads-1)
