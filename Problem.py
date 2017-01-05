@@ -33,7 +33,7 @@ class Problem(object):
         CK = self.inputData.CK
         TH = self.inputData.TH
 
-        self.tasks = []                             # vector with tasks
+        self.tasks = []                             # review this
         for tId in xrange(0, nTasks):               # tId = 0..(nTasks-1)
             task = Task(tId)
             for hId in xrange(0, nThreads):         # hId = 0..(nThreads-1)
