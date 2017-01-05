@@ -1,4 +1,4 @@
-'''
+﻿'''
 AMMM Lab Heuristics v1.0
 Representation of a problem instance.
 Copyright 2016 Luis Velasco and Lluis Gifre.
@@ -24,16 +24,13 @@ class Problem(object):
     def __init__(self, inputData):
         self.inputData = inputData
         
-        nTasks = self.inputData.nTasks
-        nThreads = self.inputData.nThreads
-        nCPUs = self.inputData.nCPUs
-        nCores = self.inputData.nCores
-        rh = self.inputData.rh
-        rc = self.inputData.rc
-        CK = self.inputData.CK
-        TH = self.inputData.TH
+        nLocations = self.inputData.nLocations
+        maxTime = self.inputData.maxTime
+        tl = self.inputData.tl
+        timeWindow = self.inputData.timeWindow
+        dist = self.inputData.dist
 
-        self.tasks = []                             # vector with tasks
+        self.nLocations = []                             # vector with tasks
         for tId in xrange(0, nTasks):               # tId = 0..(nTasks-1)
             task = Task(tId)
             for hId in xrange(0, nThreads):         # hId = 0..(nThreads-1)
