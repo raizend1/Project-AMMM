@@ -1,5 +1,5 @@
 ﻿'''
-AMMM Lab Heuristics v1.1
+AMMM Lab Heuristics v1.0
 Instance file validator.
 Copyright 2016 Luis Velasco and Lluis Gifre.
 
@@ -22,49 +22,47 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # It does not validate that the instance is feasible or not.
 # Use Problem.checkInstance() function to validate the feasibility of the instance.
 class ValidateInputData(object):
-	@staticmethod
+    @staticmethod
     def validate(data):
-   	# Validate that all input parameters were found
-   	for paramName in ['nLocations', 'maxTime', 'tl', 'timeWindow', 'dist']:
-   		if(not data.__dict__.has_key(paramName)):
-   			raise Exception('Parameter/Set(%s) not contained in Input Data' % str(paramName))
-               
-   		# Validate nLocations 
-   		nLocations = data.nLocations
-   		if(not isinstance(nLocations, (int, long)) or (nLocations <= 0)):
-   			raise Exception('nLocations(%s) has to be a positive integer value.' % str(nLocations))
-   		
-   		# Validate maxTime
-   		maxTime = data.maxTime
-   		if(not isinstance(maxTime, (int, long)) or (maxTime <= 0)):
-   			raise Exception('maxTime(%s) has to be a positive integer value.' % str(nThreads))
-   		
+        # Validate that all input parameters were found
+        for paramName in ['nLocations', 'maxTime', 'tl', 'timeWindow', 'dist']:
+            if(not data.__dict__.has_key(paramName)):
+                raise Exception('Parameter/Set(%s) not contained in Input Data' % str(paramName))
 
+        # Validate nLocations
+        nLocations = data.nLocations
+        if(not isinstance(nLocations, (int, long)) or (nLocations <= 0)):
+            raise Exception('nLocations(%s) has to be a positive integer value.' % str(nLocations))
+        
+        # Validate maxTime
+        maxTime = data.maxTime
+        if(not isinstance(maxTime, (int, long)) or (maxTime <= 0)):
+            raise Exception('maxTime(%s) has to be a positive integer value.' % str(maxTime))
+         
         # Validate tl
         tl = data.tl
         if(len(tl) != nLocations-1):
-        	raise Exception('Size of tl(%d) does not match with value of nLocations-1(%d).' % (len(tl), nLocations-1))
+            raise Exception('Size of tl(%d) does not match with value of nLocations-1(%d).' % (len(tl), nLocations))
         
         for value in tl:
-        	if(not isinstance(value, (int, long, float)) or (value < 0)):
-        		raise Exception('Invalid parameter value(%s) in tl. Should be a float greater or equal than zero.' % str(value))
+            if(not isinstance(value, (int, long, float)) or (value < 0)):
+                raise Exception('Invalid parameter value(%s) in tl. Should be a float greater or equal than zero.' % str(value))
         
         # Validate timeWindow
         timeWindow = data.timeWindow
-        if(len(timeWindow) != nLocations-1):
-        	raise Exception('Size of timeWindow(%d) does not match with value of nLocations-1(%d).' % (len(timeWindow), nLocations-1))
+        if(len(timeWindow) != nLocations):
+            raise Exception('Size of timeWindow(%d) does not match with value of nLocations-1(%d).' % (len(timeWindow), nLocations))
         
         for value in timeWindow:
-        	if(not isinstance(value, (int, long, float)) or (value < 0)):
-        		raise Exception('Invalid parameter value(%s) in timeWindow. Should be a float greater or equal than zero.' % str(value))
-        
+            if(not isinstance(value, (int, long, float)) or (value < 0)):
+                raise Exception('Invalid parameter value(%s) in timeWindow. Should be a float greater or equal than zero.' % str(value))
+
         # Validate dist
         dist = data.dist
         if(len(dist) != nLocations):
-        	raise Exception('Size of first dimension of dist(%d) does not match with value of nLocations(%d).' % (len(dist), nLocations))
+            raise Exception('Size of first dimension of dist(%d) does not match with value of nLocations(%d).' % (len(dist), nLocations))
         
         for thEntry in dist:
-        	if(len(thEntry) != nLocations):
-        		raise Exception('Size of second dimension of dist(%d) does not match with value of nLocations(%d).' % (len(thEntry), nLocations))
+            if(len(thEntry) != nLocations):
+                raise Exception('Size of second dimension of dist(%d) does not match with value of nLocations(%d).' % (len(thEntry), nLocations))
 
-           
