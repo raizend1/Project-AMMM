@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
-
+import numpy
 from Task import Task
 from CPU import CPU
 
@@ -29,6 +29,20 @@ class Problem(object):
         tl = self.inputData.tl
         timeWindow = self.inputData.timeWindow
         dist = self.inputData.dist
+
+        #the constraints are the first one to insert into the algorithm
+        #first I need to create the matrix that represents if a locations has been visited or not
+        #as in cplex with constraint 1 and 2
+        #forall(l1 in L1)
+	    #   sum(l2 in L)xl[l1,l2]==1;
+        #forall(l1 in L)
+	    #   sum(l2 in L)xl[l1,l2]-sum(l2 in L)xl[l2,l1]==0;
+        
+        numpy.zeros((nLocations, nLocations))
+        
+        for l1 in xrange(1,nLocations)
+            for l2 in xrange(1,nLocations)
+                
 
         self.tasks = []                             # review this
         for tId in xrange(0, nTasks):               # tId = 0..(nTasks-1)
