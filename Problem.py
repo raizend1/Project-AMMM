@@ -30,18 +30,39 @@ class Problem(object):
         timeWindow = self.inputData.timeWindow
         dist = self.inputData.dist
 
-        #the constraints are the first one to insert into the algorithm
-        #first I need to create the matrix that represents if a locations has been visited or not
-        #as in cplex with constraint 1 and 2
-        #forall(l1 in L1)
-	    #   sum(l2 in L)xl[l1,l2]==1;
-        #forall(l1 in L)
-	    #   sum(l2 in L)xl[l1,l2]-sum(l2 in L)xl[l2,l1]==0;
-        
-        numpy.zeros((nLocations, nLocations))
-        
-        for l1 in xrange(1,nLocations)
-            for l2 in xrange(1,nLocations)
+        nLocations = 5
+    maxTime = 720
+    tl = [20,41,21,20]
+    timeWindow = [ [266,293] , [579,597] , [198,244] , [211,242] ]
+    dist=[[0,22,16,39,10],[22,0,16,12,28],[16,16,0,22,11],[39,12,22,0,23],[10,28,11,23,0]]
+
+    #the constraints are the first one to insert into the algorithm
+    #first I need to create the matrix that represents if a locations has been visited or not
+    #as in cplex with constraint 1 and 2
+    #forall(l1 in L1)
+	#   sum(l2 in L)xl[l1,l2]==1;
+    #forall(l1 in L)
+	#   sum(l2 in L)xl[l1,l2]-sum(l2 in L)xl[l2,l1]==0;
+    #we have to create the conditions to create the arrival time as in cplex
+    #distance must be in the time window()
+    #each location should be visited only once
+
+    xl = numpy.zeros((nLocations, nLocations))
+    arrivalTime = [0,0,0,0]
+    waitTime = [0,0,0,0]
+    count =0
+    for l1 in xrange(1,nLocations):
+        #count=count +1
+        #waitTime[l1-1]=dist[0][l1]
+        for l2 in xrange(1,nLocations):
+            #distance must be in the time window()  
+            if(dist[l1][l2]>=timeWindow[l2][1] and dist[l1][l2]<=timeWindow[l2][2]):
+                #each location should be visited only once
+                if(xl[l1+1][l2+1]!=1):
+                   xl[l1+1][l2+1] = 1 
+            # if(timeWindow[l2][1] <= arrivalTime[l2] and arrivalTime[l2] <= timeWindow[l2][2]):
+            #     arrivalTime[l2] = arrivalTime[l1]+tl[l1]+ waitTime[l1] +dist[l1,l2]              
+            #     xl[l1][l2] = 1
                 
 
         self.tasks = []                             # review this
