@@ -37,7 +37,7 @@ class Problem(object):
         
 
     def getVehicles(self):
-        return(self.tasks)
+        return(self.vehicles)
 
     def getCPUs(self):
         return(self.cpus)

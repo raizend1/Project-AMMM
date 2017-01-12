@@ -1,5 +1,7 @@
 '''
-AMMM Lab Heuristics v1.0
+AMMM Final Project MIRI Masters
+Based on
+AMMM Lab Heuristics v1.1
 Representation of a CPU.
 Copyright 2016 Luis Velasco and Lluis Gifre.
 
@@ -17,11 +19,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-class Locations(object):
+class Vehicle(object):
     def __init__(self, lId):
         self._lId = lId
-        self._coreIds = []      # vector: core Ids belonging to this CPU
-        self._coreCapacity = {} # hash table: core Id => total capacity of that core
+        self._locationIds = []      # vector: id that represents the locations that the vehicle has visited
+        self._coreCapacity = {}     # hash table: core Id => total capacity of that core
         self._totalCapacity = 0
 
     def addCoreAndCapacity(self, coreId, capacity):
