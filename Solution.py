@@ -40,11 +40,7 @@ class Solution(Problem):
     def __init__(self, inputData):
         super(Solution, self).__init__(inputData)
         
-        self.taskIdToCPUId = {}             # hash table: task Id => CPU Id
-        self.cpuIdToListTaskId = {}         # hash table: CPU Id => list<task Id>
-
-        self.threadIdToCoreId = {}          # hash table: thread Id => core Id
-        self.coreIdToListThreadId = {}      # hash table: core Id => list<thread Id>
+        self.vehiclesToLocation = {}        # hash table: vehicle Id => location Id
         
         # vector of available capacities per CPU initialized as a copy of maxCapacityPerCPUId vector.
         self.availCapacityPerCPUId = copy.deepcopy(self.maxCapacityPerCPUId)

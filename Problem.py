@@ -17,8 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 import numpy
-from Task import Task
-from CPU import CPU
+from Vehicle import Vehicle
 
 class Problem(object):
     def __init__(self, inputData):
@@ -28,12 +27,13 @@ class Problem(object):
         tl = self.inputData.tl
         timeWindow = self.inputData.timeWindow
         dist = self.inputData.dist
+        vehicleId = 0
 
         self.vehicles = []     
         xl = numpy.zeros((nLocations, nLocations))
         arrivalTime = [0] * nLocations-1
         waitTime = [0] * nLocations-1
-        count =0
+        
         
 
     def getVehicles(self):
