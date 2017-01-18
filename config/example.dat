@@ -1,8 +1,8 @@
 # --- Common specific parameters ------------------------------------------------------------------------------
-inputDataFile        = data/example_0.dat;    # Input DAT file
+inputDataFile        = data/big_0.dat;    # Input DAT file
 solutionFile         = solutions/example.sol; # Output DAT file (solution)
 solver               = BRKGA;                 # Supported solvers: Greedy / GRASP / BRKGA
-maxExecTime          = 120;                   # Maximum execution time in seconds
+maxExecTime          = 720;                   # Maximum execution time in seconds
 
 # --- Greedy specific parameters ------------------------------------------------------------------------------
 # Does not has specific parameters
